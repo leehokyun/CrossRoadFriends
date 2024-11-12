@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public string targetTag;
+    public string targetPlayerTag;
+    public string targetWallTag;
     private CharacterAnimationController collidingTargetAnimController;
 
     private void FixedUpdate()
@@ -19,12 +20,20 @@ public class Monster : MonoBehaviour
     {
         GameObject receiver = collision.gameObject; //닿은애를 리시버라고 할게요.
 
-        if (!receiver.CompareTag(targetTag)) //닿은 애의 태그를 봤을 때 타겟태그가 아니라면 
+        if (receiver.CompareTag(targetPlayerTag)) //닿은 애의 태그를 봤을 때 타겟태그가 아니라면 
         {
-            return; //무시할겁니다.
+            ColWithPlayer(receiver);
         }
+        else if(receiver.CompareTag(targetWallTag))
+        {
+            Destroy(this.gameObject);
+        }
+        return; //무시할겁니다.
+    }
 
-        collidingTargetAnimController = collision.gameObject.GetComponent<CharacterAnimationController>();
+    private void ColWithPlayer(GameObject go)
+    {
+        collidingTargetAnimController = go.gameObject.GetComponent<CharacterAnimationController>();
         if (collidingTargetAnimController != null)
         {
             collidingTargetAnimController.Hit();
