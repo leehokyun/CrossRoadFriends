@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -18,12 +20,15 @@ public class GameManager : MonoBehaviour
     Vector3 spawnPos1 = new Vector3(0, 0, 0);
     Vector3 spawnPos2 = new Vector3(0, 0, 0);
 
-    List<int> spawnYPosList = new List<int>(); 
+    List<int> spawnXPosList = new List<int>();
+    List<int> spawnYPosList = new List<int>();
     List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기 위해서 생성된 로드 위치 담아놓기
 
 
     public GameObject endPanel;
-    public Text nowScore;
+    public TextMeshProUGUI nowScore;
+
+    public int score = 0;
 
     private void Awake()
     {
@@ -78,7 +83,7 @@ public class GameManager : MonoBehaviour
     void MakeTree()
     {
         int spawnAmount = Random.Range(8, 15); //스폰할 양(랜덤)
-        List<int> spawnXPosList = new List<int> { -2, -1, 0, 1, 2 }; //스폰될 X위치값 int 배열
+        spawnXPosList = new List<int> { -2, -1, 0, 1, 2 }; //스폰될 X위치값 int 배열
         List<Vector3> spawnPosList = new List<Vector3>();
 
         for (int i = 0; i < spawnAmount; i++)
@@ -96,6 +101,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void MakeCoin()
+    {
+
+    }
+
     public void GameOver()
     {
         Time.timeScale = 0f;
@@ -103,4 +113,14 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(true);
     }
 
+    public void AddScore(int coinPoint)
+    {
+        score += coinPoint;
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        nowScore.text = score.ToString();
+    }
 }

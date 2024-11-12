@@ -3,7 +3,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
