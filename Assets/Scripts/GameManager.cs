@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
     Vector3 spawnPos2 = new Vector3(0, 0, 0);
     //Transform spawnTransform;
 
+    List<int> spawnYPosList = new List<int>();
 
     // Road가 3~5개 생성되어야한다.(완료)
-        //Random range 3~5사이의 변수만큼 for문이 돈다. (완료)
-        //그 횟수만큼 Road가 Instantiate된다. (완료)
-        //spawnYPos가 겹치지 않아야한다. 그러기위해서는 배열값들이 한번 쓸때마다 제거되어야한다.
+    //Random range 3~5사이의 변수만큼 for문이 돈다. (완료)
+    //그 횟수만큼 Road가 Instantiate된다. (완료)
+    //spawnYPos가 겹치지 않아야한다. 그러기위해서는 배열값들이 한번 쓸때마다 제거되어야한다.
 
 
     // Road마다의 위치 값을 받아와야 한다.(전역변수)
@@ -36,31 +37,35 @@ public class GameManager : MonoBehaviour
 
     void MakeRoad()
     {
-        int spawnAmount = Random.Range(3, 6); //스폰할 양(랜덤)
-        List<int> spawnYPosList = new List<int> { -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
+        int spawnAmount = Random.Range(4, 6); //스폰할 양(랜덤)
+        spawnYPosList = new List<int> { -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
 
         for (int i = 0; i < spawnAmount; i++) //스폰될 양만큼 반복하여 생성
         {
             int spawnYPos = spawnYPosList[Random.Range(0, spawnYPosList.Count)]; //randomYPos에 랜덤하게 특정 스폰Y값이 배정됨
             Vector3 spawnPos = new Vector3(0, spawnYPos, 0); //스폰 위치 세팅 
-            spawnYPosList.Remove(spawnYPos); //위치값이 겹치지 않도록 배열에서 방금 쓴 값을 삭제.
+            spawnYPosList.Remove(spawnYPos); //위치값이 겹치지 않도록 배열에서 방금 쓴 값을 삭제. 
             Instantiate(road, spawnPos, Quaternion.identity); //생성
         }
+
+        //HAVE TO FIX:
+        //리스트나 배열을 활용해 Index접근법 활용하기.(배열 추천)
+        //현재 문제: spawnAMount가 매번 for문을 돌아야하는 만큼의 비효율 
+        //계산식이 지금은 n이다. Index방식을 쓰면 1이 될 수 있다.(효율적)
     }
 
     void MakeMonster()
     {
         Debug.Log("몬스터생성");
+        //TODO: 생성된 ROAD프리팹의 위치값 받아와서 몬스터 생성하기
     }
 
     void MakeTree()
     {
-        int spawnAmount = Random.Range(8, 15); //스폰할 양(랜덤)
+        int spawnAmount = Random.Range(6, 11); //스폰할 양(랜덤)
         List<int> spawnXPosList = new List<int> { -2, -1, 0, 1, 2 }; //스폰될 X위치값 int 배열
-        List<int> spawnYPosList = new List<int> { -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
+        //List<int> spawnYPosList = new List<int> { -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열은 Road 생성 뒤에 남은 값을 쓴다?
         List<Vector3> spawnPosList = new List<Vector3>();
-
-        //방법 고안: Dictionary 전체 범위를 세팅하는 for문을 만들고 -> 그 다음 거기서 겹치는 걸 뺀다.
 
         for (int i = 0; i < spawnAmount; i++)
         {
