@@ -1,17 +1,9 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-public class GameManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [SerializeField] private string playerTag;
-    public Transform Player;
-
     public GameObject road;
     public GameObject monster;
     public GameObject tree;
@@ -26,19 +18,6 @@ public class GameManager : MonoBehaviour
     List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기 위해서 생성된 로드 위치 담아놓기
 
     List<Vector3> objectSpawnPosList = new List<Vector3>(); //나무, 코인 오브젝트가 이미 생성된 위치 값을 저장해놓는 리스트 (이후 겹쳐서 생성되지 않도록 하기 위함)
-
-    public GameObject endPanel;
-    public TextMeshProUGUI nowScore;
-
-    public int score = 0;
-
-    private void Awake()
-    {
-        if (Instance != null) Destroy(gameObject);
-        Instance = this;
-
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform;
-    }
 
 
     private void Start()
@@ -120,24 +99,5 @@ public class GameManager : MonoBehaviour
         }
         //문제가 있다. 이경우에는 컨티뉴로 건너뛰면 최소 스폰양을 채우지 못하게 될 수 있다.
         //do while쓰면 강제로 생성은 가능하게 함.
-    }
-
-    public void GameOver()
-    {
-        Time.timeScale = 0f; 
-        //이거 말고 Update에서 처리할 수 있는 정지 방법이 있을 것. update timescale. 몬스터, 캐릭터, Ianimated 캐릭터들의 이동만 따로 
-        //nowScore.text에 스코어 ToString()하기.
-        endPanel.SetActive(true);
-    }
-
-    public void AddScore(int coinPoint)
-    {
-        score += coinPoint;
-        UpdateUI();
-    }
-
-    public void UpdateUI()
-    {
-        nowScore.text = score.ToString();
     }
 }
