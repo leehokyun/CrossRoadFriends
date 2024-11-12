@@ -55,9 +55,10 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < spawnedRoadYPosList.Count; i++)
         {
+            int spawnXPos = Random.Range(-6, -2); //원래 시간 차로 몬스터가 나와야하는데, 거리차를 통해 시간차로 나온듯이 보이도록 야매로 때우는 코드. 차후 리팩토링 필요
             spawnedRoadYPos = spawnedRoadYPosList[i];
-            Vector3 spawnPos = new Vector3(-3, spawnedRoadYPos, 0);
-            Instantiate(monster, spawnPos, Quaternion.identity); //생성 -> Invoke Reapeating으로 바뀌어야하나.
+            Vector3 spawnPos = new Vector3(spawnXPos, spawnedRoadYPos, 0);
+            Instantiate(monster, spawnPos, Quaternion.identity);
         }
     }
 
