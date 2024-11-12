@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
 
     void MakeRoad()
     {
-        int spawnAmount = Random.Range(4, 6); //스폰할 양(랜덤)
-        spawnYPosList = new List<int> { -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
+        int spawnAmount = Random.Range(4, 7); //스폰할 양(랜덤)
+        spawnYPosList = new List<int> { -3, -2, -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
 
         for (int i = 0; i < spawnAmount; i++) //스폰될 양만큼 반복하여 생성
         {
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     void MakeTree()
     {
-        int spawnAmount = Random.Range(6, 11); //스폰할 양(랜덤)
+        int spawnAmount = Random.Range(8, 15); //스폰할 양(랜덤)
         List<int> spawnXPosList = new List<int> { -2, -1, 0, 1, 2 }; //스폰될 X위치값 int 배열
         List<Vector3> spawnPosList = new List<Vector3>();
 
