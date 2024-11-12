@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     Vector3 spawnPos2 = new Vector3(0, 0, 0);
 
     List<int> spawnXPosList = new List<int> { -2, -1, 0, 1, 2 }; //스폰될 X위치값 int 배열
-    List<int> spawnYPosList = new List<int> { -3, -2, -1, 0, 1, 2, 3, 4 }; //스폰될 Y위치값 int 배열
+    List<int> spawnYPosList = new List<int> { -3, -2, -1, 0, 1, 2, 3}; //스폰될 Y위치값 int 배열
     List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기 위해서 생성된 로드 위치 담아놓기
 
     List<Vector3> objectSpawnPosList = new List<Vector3>(); //나무, 코인 오브젝트가 이미 생성된 위치 값을 저장해놓는 리스트 (이후 겹쳐서 생성되지 않도록 하기 위함)
