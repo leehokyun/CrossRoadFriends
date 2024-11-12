@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MakeRoad();
-        MakeMonster();
         MakeTree();
         MakeCoin();
+        InvokeRepeating("MakeMonster", 1f, 5f);
     }
 
     void MakeRoad()
