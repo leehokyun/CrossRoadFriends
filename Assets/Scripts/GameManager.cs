@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
@@ -8,16 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private string playerTag;
     public Transform Player;
-
-
-    private void Awake()
-    {
-        if (Instance != null) Destroy(gameObject);
-        Instance = this;
-
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform;
-    }
-
 
     public GameObject road;
     public GameObject monster;
@@ -28,7 +19,20 @@ public class GameManager : MonoBehaviour
     Vector3 spawnPos2 = new Vector3(0, 0, 0);
 
     List<int> spawnYPosList = new List<int>(); 
-    List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기위해서 생성된 로드 위치 담아놓기
+    List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기 위해서 생성된 로드 위치 담아놓기
+
+
+    public GameObject endPanel;
+    public Text nowScore;
+
+    private void Awake()
+    {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform;
+    }
+
 
     private void Start()
     {
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < spawnedRoadYPosList.Count; i++)
         {
             spawnedRoadYPos = spawnedRoadYPosList[i];
-            Vector3 spawnPos = new Vector3(0, spawnedRoadYPos, 0);
+            Vector3 spawnPos = new Vector3(-3, spawnedRoadYPos, 0);
             Instantiate(monster, spawnPos, Quaternion.identity); //생성 -> Invoke Reapeating으로 바뀌어야하나.
         }
     }
@@ -92,5 +96,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        //nowScore.text에 스코어 ToString()하기.
+        endPanel.SetActive(true);
+    }
 
 }
