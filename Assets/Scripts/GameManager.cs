@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < spawnAmount; i++)
         {
-            int spawnXPos = spawnXPosList[Random.Range(0, spawnXPosList.Count)];//randomXPos에 랜덤하게 특정 스폰X값이 배정됨
+            int spawnXPos = spawnXPosList[Random.Range(0, spawnXPosList.Count)]; //randomXPos에 랜덤하게 특정 스폰X값이 배정됨
             int spawnYPos = spawnYPosList[Random.Range(0, spawnYPosList.Count)]; //randomYPos에 랜덤하게 특정 스폰Y값이 배정됨
             Vector3 spawnPos = new Vector3(spawnXPos, spawnYPos, 0); //스폰 위치 세팅 
 
@@ -119,12 +119,13 @@ public class GameManager : MonoBehaviour
             Instantiate(coin, spawnPos, Quaternion.identity); //생성
         }
         //문제가 있다. 이경우에는 컨티뉴로 건너뛰면 최소 스폰양을 채우지 못하게 될 수 있다.
-        
+        //do while쓰면 강제로 생성은 가능하게 함.
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; 
+        //이거 말고 Update에서 처리할 수 있는 정지 방법이 있을 것. update timescale. 몬스터, 캐릭터, Ianimated 캐릭터들의 이동만 따로 
         //nowScore.text에 스코어 ToString()하기.
         endPanel.SetActive(true);
     }
