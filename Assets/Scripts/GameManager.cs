@@ -5,6 +5,20 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+    [SerializeField] private string playerTag;
+    public Transform Player;
+
+
+    private void Awake()
+    {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform;
+    }
+
+
     public GameObject road;
     public GameObject monster;
     public GameObject tree;
