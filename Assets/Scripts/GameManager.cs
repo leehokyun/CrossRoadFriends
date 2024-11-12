@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     Vector3 spawnPos2 = new Vector3(0, 0, 0);
     //Transform spawnTransform;
 
-    List<int> spawnYPosList = new List<int>();
+    List<int> spawnYPosList = new List<int>(); 
+    List<int> spawnedRoadYPosList = new List<int>(); //몬스터 생성할 위치 찾기위해서 생성된 로드 위치 담아놓기
 
     // Road가 3~5개 생성되어야한다.(완료)
     //Random range 3~5사이의 변수만큼 for문이 돈다. (완료)
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MakeRoad();
-        //MakeMonster();
+        MakeMonster();
         MakeTree();
     }
 
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
             Vector3 spawnPos = new Vector3(0, spawnYPos, 0); //스폰 위치 세팅 
             spawnYPosList.Remove(spawnYPos); //위치값이 겹치지 않도록 배열에서 방금 쓴 값을 삭제. 
             Instantiate(road, spawnPos, Quaternion.identity); //생성
+
+            spawnedRoadYPosList.Add(spawnYPos); //몬스터 생성할 위치 찾기위해서 생성된 로드 위치 담아놓기
         }
 
         //HAVE TO FIX:
@@ -56,8 +59,15 @@ public class GameManager : MonoBehaviour
 
     void MakeMonster()
     {
-        Debug.Log("몬스터생성");
-        //TODO: 생성된 ROAD프리팹의 위치값 받아와서 몬스터 생성하기
+
+        int spawnedRoadYPos;
+
+        for (int i = 0; i < spawnedRoadYPosList.Count; i++)
+        {
+            spawnedRoadYPos = spawnedRoadYPosList[i];
+            Vector3 spawnPos = new Vector3(0, spawnedRoadYPos, 0);
+            Instantiate(monster, spawnPos, Quaternion.identity); //생성 -> Invoke Reapeating으로 바뀌어야하나.
+        }
     }
 
     void MakeTree()
