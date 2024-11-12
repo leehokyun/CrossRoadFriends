@@ -16,9 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject endPanel;
     public TextMeshProUGUI nowScore;
 
+
+    public TextMeshProUGUI timeTxt;
     public int score = 0;
 
     float time = 0f;
+    private float elapsedTime = 0f; // 경과 시간 변수
 
     private void Awake()
     {
@@ -26,12 +29,30 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;
+
+
+
     }
 
     private void Update()
     {
         time += Time.deltaTime;
+        SetTimeTxt();
+
+        elapsedTime += Time.deltaTime;
+
+        //매 10초마다 시간을 체크한다.
+        if (elapsedTime >= 10f)
+        {
+            AddScore(100);
+            elapsedTime = 0f;
+        }
     }
+
+    //시간 값을 받아온다.
+    //10초마다, 즉 10의 배수일 때마다
+    //100점씩 더한다.
+    //시간도 UI에 표기한다.
 
     public void GameOver()
     {
@@ -41,9 +62,14 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(true);
     }
 
-    public void AddScore(int coinPoint)
+    void SetTimeTxt()
     {
-        score += coinPoint;
+        timeTxt.text = time.ToString("N2");
+    }
+    
+    public void AddScore(int Score)
+    {
+        score += Score;
         UpdateUI();
     }
 
