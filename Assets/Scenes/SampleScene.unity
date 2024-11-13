@@ -4892,6 +4892,18 @@ MonoBehaviour:
   - tag: SoundSource
     prefab: {fileID: 2556753425071253700, guid: 2517a0f4c28dfe94b80a0d4da4dd442c, type: 3}
     size: 5
+  - tag: Monster
+    prefab: {fileID: 5247378679586129537, guid: 973127e125108ad468747d3420185cb0, type: 3}
+    size: 25
+  - tag: Road
+    prefab: {fileID: 1049252300914867248, guid: 08347a8592c635646b6cde258acf31e6, type: 3}
+    size: 7
+  - tag: Tree
+    prefab: {fileID: 4090226590500926619, guid: 9248a2d7b91389f47ba26a4fd08532c3, type: 3}
+    size: 15
+  - tag: Coin
+    prefab: {fileID: 3703713588853245043, guid: 4f136f80dc6f6e0439414d866a325cf3, type: 3}
+    size: 15
 --- !u!1 &2098806123
 GameObject:
   m_ObjectHideFlags: 0

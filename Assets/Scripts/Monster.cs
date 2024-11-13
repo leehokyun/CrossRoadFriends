@@ -28,7 +28,7 @@ public class Monster : MonoBehaviour
         }
         else if(receiver.CompareTag(targetWallTag))
         {
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
         return; //무시할겁니다.
     }

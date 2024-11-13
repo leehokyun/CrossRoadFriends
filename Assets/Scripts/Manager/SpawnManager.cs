@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject road;
-    public GameObject monster;
-    public GameObject tree;
-    public GameObject coin;
+    //[SerializeField] private GameObject road;
+    //[SerializeField] private GameObject monster;
+    //[SerializeField] private GameObject tree;
+    //[SerializeField] private GameObject coin;
+
 
     // 스폰될 Y값
     Vector3 spawnPos1 = new Vector3(0, 0, 0);
@@ -37,8 +38,8 @@ public class SpawnManager : MonoBehaviour
             int spawnYPos = spawnYPosList[Random.Range(0, spawnYPosList.Count)]; //randomYPos에 랜덤하게 특정 스폰Y값이 배정됨
             Vector3 spawnPos = new Vector3(0, spawnYPos, 0); //스폰 위치 세팅 
             spawnYPosList.Remove(spawnYPos); //위치값이 겹치지 않도록 배열에서 방금 쓴 값을 삭제. 
-            Instantiate(road, spawnPos, Quaternion.identity); //생성
-
+            GameObject road = GameManager.Instance.ObjectPool.SpawnFromPool("Road");
+            road.transform.position = spawnPos;
             spawnedRoadYPosList.Add(spawnYPos); //몬스터 생성할 위치 찾기위해서 생성된 로드 위치 담아놓기
         }
 
@@ -58,7 +59,9 @@ public class SpawnManager : MonoBehaviour
             int spawnXPos = Random.Range(-6, -2); //원래 시간 차로 몬스터가 나와야하는데, 거리차를 통해 시간차로 나온듯이 보이도록 야매로 때우는 코드. 차후 리팩토링 필요
             spawnedRoadYPos = spawnedRoadYPosList[i];
             Vector3 spawnPos = new Vector3(spawnXPos, spawnedRoadYPos, 0);
-            Instantiate(monster, spawnPos, Quaternion.identity);
+
+            GameObject monster = GameManager.Instance.ObjectPool.SpawnFromPool("Monster");
+            monster.transform.position = spawnPos;
         }
     }
 
@@ -77,7 +80,8 @@ public class SpawnManager : MonoBehaviour
                 continue;
             }
             objectSpawnPosList.Add(spawnPos);
-            Instantiate(tree, spawnPos, Quaternion.identity); //생성
+            GameObject tree = GameManager.Instance.ObjectPool.SpawnFromPool("Tree");
+            tree.transform.position = spawnPos;
         }
     }
 
@@ -96,7 +100,8 @@ public class SpawnManager : MonoBehaviour
                 continue;
             }
             objectSpawnPosList.Add(spawnPos);
-            Instantiate(coin, spawnPos, Quaternion.identity); //생성
+            GameObject coin = GameManager.Instance.ObjectPool.SpawnFromPool("Coin");
+            coin.transform.position = spawnPos;
         }
         //문제가 있다. 이경우에는 컨티뉴로 건너뛰면 최소 스폰양을 채우지 못하게 될 수 있다.
         //do while쓰면 강제로 생성은 가능하게 함.
