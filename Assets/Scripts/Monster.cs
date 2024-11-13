@@ -6,6 +6,8 @@ public class Monster : MonoBehaviour
     public string targetWallTag;
     private CharacterAnimationController collidingTargetAnimController;
 
+    [SerializeField] private AudioClip hitSoundClip;
+
     private void FixedUpdate()
     {
         Move();
@@ -37,6 +39,12 @@ public class Monster : MonoBehaviour
         if (collidingTargetAnimController != null)
         {
             collidingTargetAnimController.Hit();
+            HitSound();
         }
+    }
+
+    private void HitSound()
+    {
+        if (hitSoundClip) SoundManager.PlayClip(hitSoundClip);
     }
 }

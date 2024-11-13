@@ -7,6 +7,8 @@ public class TopDownMovement : MonoBehaviour
 
     private Vector2 movementDirection = Vector2.zero;
 
+    
+
     private void Awake()
     {
         controller = GetComponent<TopDownController>();

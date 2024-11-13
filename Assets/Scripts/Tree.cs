@@ -8,6 +8,8 @@ public class Tree : MonoBehaviour
 
     private CharacterAnimationController collidingTargetAnimController;
 
+    [SerializeField] private AudioClip hitSoundClip;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject receiver = collision.gameObject; //닿은애를 리시버라고 할게요.
@@ -21,6 +23,13 @@ public class Tree : MonoBehaviour
         if (collidingTargetAnimController != null)
         {
             collidingTargetAnimController.Hit();
+            HitSound();
         }
+    }
+
+
+    private void HitSound()
+    {
+        if (hitSoundClip) SoundManager.PlayClip(hitSoundClip);
     }
 }

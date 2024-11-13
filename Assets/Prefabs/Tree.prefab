@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  hitSoundClip: {fileID: 8300000, guid: 0bddcb411d826e14bb26d40ae45d8e22, type: 3}
 --- !u!61 &7111233112388844193
 BoxCollider2D:
   m_ObjectHideFlags: 0

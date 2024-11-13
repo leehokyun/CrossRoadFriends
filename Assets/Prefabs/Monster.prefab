@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPlayerTag: Player
   targetWallTag: Wall
+  hitSoundClip: {fileID: 8300000, guid: 0bddcb411d826e14bb26d40ae45d8e22, type: 3}
 --- !u!50 &5285868932526069349
 Rigidbody2D:
   serializedVersion: 4

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPoint: 100
   playerTag: Player
+  coinSoundClip: {fileID: 8300000, guid: 4b294d59d2399014daa718b35c9de73b, type: 3}
 --- !u!61 &3794998978426530109
 BoxCollider2D:
   m_ObjectHideFlags: 0

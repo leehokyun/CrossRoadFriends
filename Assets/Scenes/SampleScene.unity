@@ -3190,6 +3190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1464c3cfcc5921048a556cdb5cab7d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foolStepClip: {fileID: 8300000, guid: 14f24de2a9a70154e96297de25e2184c, type: 3}
 --- !u!1 &1219972110
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,6 +4404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   particlePos: {fileID: 1670982394}
+  goalSoundClip: {fileID: 8300000, guid: 2c4bc183a5df5aa4baf7c4fcf236a2de, type: 3}
 --- !u!1 &1944802795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,7 +5946,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 0
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -9873,8 +9875,8 @@ SceneRoots:
   - {fileID: 392988541}
   - {fileID: 1944802797}
   - {fileID: 2096083301}
+  - {fileID: 150024303}
   - {fileID: 857663490}
   - {fileID: 1797067174}
   - {fileID: 2061907930}
   - {fileID: 1670982395}
-  - {fileID: 150024303}
