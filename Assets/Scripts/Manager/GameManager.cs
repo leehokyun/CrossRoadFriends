@@ -12,15 +12,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playerTag;
     public Transform Player;
 
-    
-    public GameObject endPanel;
-    public TextMeshProUGUI nowScore;
+    public GameObject endPanelUI;
+    public GameObject hudUI;
 
+    EndPanel endPanel;
+    HudUI hud;
 
-    public TextMeshProUGUI timeTxt;
     public int score = 0;
 
-    float time = 0f;
+    public float time = 0f;
     private float elapsedTime = 0f; // 경과 시간 변수
     public ParticleSystem EffectParticle;
 
@@ -36,12 +36,20 @@ public class GameManager : MonoBehaviour
 
         EffectParticle = GameObject.FindGameObjectWithTag("Particle").gameObject.GetComponent<ParticleSystem>();
         ObjectPool = GetComponent<ObjectPool>();
+
+        endPanel = endPanelUI.gameObject.GetComponent<EndPanel>();
+        hud = hudUI.gameObject.GetComponent<HudUI>();
+    }
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
     }
 
     private void Update()
     {
         time += Time.deltaTime;
-        SetTimeTxt();
+        hud.SetTimeTxt(time);
 
         elapsedTime += Time.deltaTime;
 
@@ -53,32 +61,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //시간 값을 받아온다.
-    //10초마다, 즉 10의 배수일 때마다
-    //100점씩 더한다.
-    //시간도 UI에 표기한다.
-
     public void GameOver()
     {
-        Time.timeScale = 0f; 
-        //이거 말고 Update에서 처리할 수 있는 정지 방법이 있을 것. update timescale. 몬스터, 캐릭터, Ianimated 캐릭터들의 이동만 따로 
-        //nowScore.text에 스코어 ToString()하기.
-        endPanel.SetActive(true);
-    }
+        //Time.timeScale = 0f;
 
-    void SetTimeTxt()
-    {
-        timeTxt.text = time.ToString("N2");
+        endPanel.SetPanel();
+        endPanelUI.SetActive(true);
     }
-    
+        
     public void AddScore(int Score)
     {
         score += Score;
-        UpdateUI();
-    }
-
-    public void UpdateUI()
-    {
-        nowScore.text = score.ToString();
+        hud.UpdateUI(score);
     }
 }

@@ -23,6 +23,7 @@ public class Goal : MonoBehaviour
             em.SetBurst(0, new ParticleSystem.Burst(0, 10));
             particleSystem.Play();
             GoalSound();
+            GameManager.Instance.GameOver();
         }
     }
 

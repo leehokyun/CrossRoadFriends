@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    //[SerializeField] private GameObject road;
-    //[SerializeField] private GameObject monster;
-    //[SerializeField] private GameObject tree;
-    //[SerializeField] private GameObject coin;
-
 
     // 스폰될 Y값
     Vector3 spawnPos1 = new Vector3(0, 0, 0);
