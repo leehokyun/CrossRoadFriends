@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.02
   size: 1
-  animation: {fileID: 0}
+  animator: {fileID: 9100000, guid: 3d559a5f811cdfc4286a951e46dfc28f, type: 2}
   sprite: {fileID: -493647738, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
   prefab: {fileID: 5247378679586129537, guid: 973127e125108ad468747d3420185cb0, type: 3}

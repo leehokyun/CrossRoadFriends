@@ -8,7 +8,7 @@ public class MonsterSO : ScriptableObject
     [Header("Monster Info")]
     public float speed;
     public float size;
-    //public Animation animation;
+    public RuntimeAnimatorController animator;
     public Sprite sprite;
     public GameObject prefab;
 }

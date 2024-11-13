@@ -6,6 +6,8 @@ public class Monster : MonoBehaviour
     public MonsterSO monsterSO;
     private float speed;
 
+    Animator animator;
+    
     public string targetPlayerTag;
     public string targetWallTag;
     private CharacterAnimationController collidingTargetAnimController;
@@ -37,7 +39,10 @@ public class Monster : MonoBehaviour
     {
         SetMonsterType();
         Sprite sprite = GetComponent<Sprite>();
-        
+
+        animator = GetComponentInChildren<Animator>();
+        animator.runtimeAnimatorController = monsterSO.animator;
+
         sprite = monsterSO.sprite;
         gameObject.transform.localScale *= monsterSO.size;
         speed = monsterSO.speed;

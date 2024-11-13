@@ -420,6 +420,67 @@ Transform:
   - {fileID: 523574164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &58316606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3674712542407208585, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3d559a5f811cdfc4286a951e46dfc28f, type: 2}
+    - target: {fileID: 5247378679586129537, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_Name
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342138716094189197, guid: 973127e125108ad468747d3420185cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 973127e125108ad468747d3420185cb0, type: 3}
 --- !u!1 &126380863
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e3c6c648323b043af92e3db9c716d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSourceGO: {fileID: 0}
-  instantiatePos: {fileID: 0}
   soundEffectVolume: 0.3
   soundEffectPitchVariance: 0.2
   musicVolume: 0.1
@@ -4434,10 +4493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03377bdfde6fcf843a3c2f8831a32f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  road: {fileID: 1049252300914867248, guid: 08347a8592c635646b6cde258acf31e6, type: 3}
-  monster: {fileID: 5247378679586129537, guid: 973127e125108ad468747d3420185cb0, type: 3}
-  tree: {fileID: 4090226590500926619, guid: 9248a2d7b91389f47ba26a4fd08532c3, type: 3}
-  coin: {fileID: 3703713588853245043, guid: 4f136f80dc6f6e0439414d866a325cf3, type: 3}
 --- !u!4 &1944802797
 Transform:
   m_ObjectHideFlags: 0
@@ -9892,3 +9947,4 @@ SceneRoots:
   - {fileID: 1797067174}
   - {fileID: 2061907930}
   - {fileID: 1670982395}
+  - {fileID: 58316606}
