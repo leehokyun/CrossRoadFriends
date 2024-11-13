@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     float time = 0f;
     private float elapsedTime = 0f; // 경과 시간 변수
+    public ParticleSystem EffectParticle;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
 
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;
 
-
+        EffectParticle = GameObject.FindGameObjectWithTag("Particle").gameObject.GetComponent<ParticleSystem>();
 
     }
 
