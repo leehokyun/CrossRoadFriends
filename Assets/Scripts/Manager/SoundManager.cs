@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public GameObject soundSourceGO;
-    public GameObject instantiatePos;
     public static SoundManager instance;
 
     [SerializeField][Range(0f, 1f)] private float soundEffectVolume;

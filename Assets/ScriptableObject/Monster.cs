@@ -1,12 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
-
 public class Monster : MonoBehaviour
 {
+    public MonsterSO[] monsterSOArr;
+    public MonsterSO monsterSO;
+    private float speed;
+
     public string targetPlayerTag;
     public string targetWallTag;
     private CharacterAnimationController collidingTargetAnimController;
 
     [SerializeField] private AudioClip hitSoundClip;
+
+    void SetMonsterType()
+    {
+        int probability = Random.Range(0, 100);
+
+        switch(probability / 10)
+        {
+            case 10:
+            case 9:
+                monsterSO = monsterSOArr[2]; //hell
+                break;
+            case 8:
+            case 7:
+            case 6:
+                monsterSO = monsterSOArr[1]; //hard
+                break;
+            default:
+                monsterSO = monsterSOArr[0]; //normal
+                break;
+        }
+    }
+
+    private void Awake()
+    {
+        SetMonsterType();
+        Sprite sprite = GetComponent<Sprite>();
+        
+        sprite = monsterSO.sprite;
+        gameObject.transform.localScale *= monsterSO.size;
+        speed = monsterSO.speed;
+    }
 
     private void FixedUpdate()
     {
@@ -15,7 +50,7 @@ public class Monster : MonoBehaviour
 
     private void Move()
     {
-        transform.position += Vector3.right * 0.01f;
+        transform.position += Vector3.right * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
