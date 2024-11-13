@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
 
     void MakeRoad()
     {
-        int spawnAmount = Random.Range(4, 7); //스폰할 양(랜덤)
+        int spawnAmount = Random.Range(3, 5); //스폰할 양(랜덤)
 
         for (int i = 0; i < spawnAmount; i++) //스폰될 양만큼 반복하여 생성
         {
@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviour
 
     void MakeCoin()
     {
-        int spawnAmount = Random.Range(5, 15); //스폰할 양(랜덤)
+        int spawnAmount = Random.Range(10, 15); //스폰할 양(랜덤)
 
         for (int i = 0; i < spawnAmount; i++)
         {

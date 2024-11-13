@@ -22,11 +22,12 @@ public class Monster : MonoBehaviour
         {
             case 10:
             case 9:
+            case 8:
                 monsterSO = monsterSOArr[2]; //hell
                 break;
-            case 8:
             case 7:
             case 6:
+            case 5:
                 monsterSO = monsterSOArr[1]; //hard
                 break;
             default:
