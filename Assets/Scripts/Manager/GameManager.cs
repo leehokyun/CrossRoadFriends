@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     private float elapsedTime = 0f; // 경과 시간 변수
     public ParticleSystem EffectParticle;
 
+
+    public ObjectPool ObjectPool { get; private set; }
+
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject);
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;
 
         EffectParticle = GameObject.FindGameObjectWithTag("Particle").gameObject.GetComponent<ParticleSystem>();
-
+        ObjectPool = GetComponent<ObjectPool>();
     }
 
     private void Update()

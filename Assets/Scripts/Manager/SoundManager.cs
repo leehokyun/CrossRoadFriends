@@ -33,11 +33,11 @@ public class SoundManager : MonoBehaviour
         instance.musicAudioSource.clip = musicClip;
         instance.musicAudioSource.Play();
     }
-    private void PlayClip(AudioClip clip)
+    public static void PlayClip(AudioClip clip)
     {
-        //오브젝트 풀하기 (강의에 있음)
-        Instantiate(soundSourceGO, instantiatePos.transform.position, Quaternion.identity);
-        SoundSource soundSource = soundSourceGO.GetComponent<SoundSource>();
+        GameObject obj = GameManager.Instance.ObjectPool.SpawnFromPool("SoundSource");
+        obj.SetActive(true);
+        SoundSource soundSource = obj.GetComponent<SoundSource>();
         soundSource.Play(clip, instance.soundEffectVolume, instance.soundEffectPitchVariance);
     }
 }
