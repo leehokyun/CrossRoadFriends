@@ -64,6 +64,9 @@ public class SpawnManager : MonoBehaviour
     {
         int spawnAmount = Random.Range(8, 15); //스폰할 양(랜덤)
 
+        int randomEmptyXPos = Random.Range(-2, 3);
+        spawnXPosList.Remove(randomEmptyXPos); //X중 한 칸 생성 안되게해서 야매로 한칸 비워놓는 코드...;;
+        
         for (int i = 0; i < spawnAmount; i++)
         {
             int spawnXPos = spawnXPosList[Random.Range(0, spawnXPosList.Count)];//randomXPos에 랜덤하게 특정 스폰X값이 배정됨
@@ -78,12 +81,13 @@ public class SpawnManager : MonoBehaviour
             GameObject tree = GameManager.Instance.ObjectPool.SpawnFromPool("Tree");
             tree.transform.position = spawnPos;
         }
+        spawnXPosList.Add(randomEmptyXPos);
     }
 
     void MakeCoin()
     {
         int spawnAmount = Random.Range(10, 15); //스폰할 양(랜덤)
-
+        
         for (int i = 0; i < spawnAmount; i++)
         {
             int spawnXPos = spawnXPosList[Random.Range(0, spawnXPosList.Count)]; //randomXPos에 랜덤하게 특정 스폰X값이 배정됨
@@ -98,6 +102,7 @@ public class SpawnManager : MonoBehaviour
             GameObject coin = GameManager.Instance.ObjectPool.SpawnFromPool("Coin");
             coin.transform.position = spawnPos;
         }
+        
         //문제가 있다. 이경우에는 컨티뉴로 건너뛰면 최소 스폰양을 채우지 못하게 될 수 있다.
         //do while쓰면 강제로 생성은 가능하게 함.
     }
